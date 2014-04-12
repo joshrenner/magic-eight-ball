@@ -1,43 +1,245 @@
 <polymer-element name="magic-eight-ball" attributes="outlook">
     <template>
         <style>
-            :host {
-                border: 1px solid #ddd;
-                text-align: center;
-                display: inline-block;
+            body {
+                -webkit-perspective: 10000px;
+                -ms-perspective: 10000px;
+                perspective: 10000px;
+                -webkit-perspective-origin: 50%;
+                -ms-perspective-origin: 50%;
+                perspective-origin: 50%;
             }
-            :host > img {
-                display: block;
+            .ball,
+            .answer,
+            .eight,
+            div.ball:after,
+            div.answer:after,
+            div.eight:after,
+            div.ball:before,
+            div.answer:before,
+            div.eight:before {
+                border-radius: 50%;
+            }
+            .ball {
                 cursor: pointer;
+                position: relative;
+                display: block;
+                margin: 30px auto;
+                width: 300px;
+                height: 300px;
+                background: black;
+                -webkit-box-shadow: 20px 20px 50px rgba(255, 255, 255, 0.4) inset;
+                box-shadow: 20px 20px 50px rgba(255, 255, 255, 0.4) inset;
+                -webkit-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+            .ball.shake {
+                -webkit-animation: ball 1s ease alternate;
+                animation: ball 1s ease alternate;
+            }
+            .ball:before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                bottom: -50px;
+                left: -50px;
+                right: -50px;
+                border: 50px solid #ffffff;
+            }
+            .ball:after {
+                content: '';
+                position: absolute;
+                bottom: 0px;
+                right: 0;
+                width: 70%;
+                height: 10px;
+                background: black;
+                -webkit-box-shadow: 0 0 15px 15px black;
+                box-shadow: 0 0 15px 15px black;
+                opacity: .5;
             }
 
-            @keyframes shake {
-                0% { transform: translate(6px, 0); }
-                50% { transform: translate(-6px, 0); }
-                100% { transform: translate(0, 0); }
+            .ball .answer {
+                opacity: 0;
+                border: 4px solid #444;
+                -webkit-box-shadow: inset -12px -22px 70px 0px rgba(255, 255, 255, .2);
+                -moz-box-shadow: inset -12px -22px 70px 0px rgba(255, 255, 255, .2);
+                box-shadow: inset -12px -22px 70px 0px rgba(255, 255, 255, .2);
             }
-            @-moz-keyframes shake {
-                0% { -moz-transform: translate(6px, 0); }
-                50% { -moz-transform: translate(-6px, 0); }
-                100% { -moz-transform: translate(0, 0); }
+            .ball .answer .triangle,
+            .ball .answer .text {
+                opacity: 0;
+                -webkit-transition: opacity .8s ease-in;
+                -moz-transition: opacity .8s ease-in;
+                -o-transition: opacity .8s ease-in;
+                -transition: opacity .8s ease-in;
             }
-            @-webkit-keyframes shake {
-                0% { -webkit-transform: translate(6px, 0); }
-                50% { -webkit-transform: translate(-6px, 0); }
-                100% { -webkit-transform: translate(0, 0); }
+            .ball .answer .triangle {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -30px 0 0 -49px;
+                height: 0;
+                width: 0;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-top: 80px solid blue;
+            }
+            .ball .answer .text {
+                color: white;
+                font: .65em/1.2 sans-serif;
+                text-align: center;
+                position: relative;
+                vertical-align: middle;
+                height: 100%;
+                width: 100%;
+            }
+            .ball .eight,
+            .ball .answer {
+                position: absolute;
+                top: 30%;
+                left: 30%;
+                width: 40%;
+                height: 40%;
+            }
+            .ball .eight {
+                opacity: 1;
+                -webkit-transition: opacity .1s ease-out;
+                -moz-transition: opacity .1s ease-out;
+                -o-transition: opacity .1s ease-out;
+                -transition: opacity .1s ease-out;
+            }
+            .ball .eight:before {
+                content: '8';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                font-size: 6em;
+                line-height: 125px;
+                text-align: center;
+                background: white;
             }
 
-            :host > img:active {
-                cursor: ew-resize;
-                animation: shake 100ms infinite ease-in-out;
-                -moz-animation: shake 100ms infinite ease-in-out;
-                -webkit-animation: shake 100ms infinite ease-in-out;
+            .ball.tell .answer .text {
+                display: table-cell;
+            }
+            .ball.tell .answer,
+            .ball.tell .answer .text,
+            .ball.tell .answer .triangle {
+                opacity: 1;
+            }
+            .ball.tell .eight {
+                opacity: 0;
+                content: "";
+            }
+
+            .ball.shake .eight,
+            .ball.shake .answer {
+                -webkit-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                -webkit-animation: eight 1s ease alternate;
+                animation: eight 1s ease alternate;
+            }
+            .ball.shake .eight:before {
+                -webkit-transform: translateZ(150px);
+                -ms-transform: translateZ(150px);
+                transform: translateZ(150px);
+            }
+            .ball.shake .answer {
+                visibility: hidden;
+            }
+
+            @-webkit-keyframes fadeIn {
+                0% {opacity: 0;}
+                74% {opacity: .2;}
+                100% {opacity: 1;}
+            }
+            @keyframes fadeIn {
+                0% {opacity: 0;}
+                74% {opacity: .2;}
+                100% {opacity: 1;}
+            }
+            @-webkit-keyframes fadeOut {
+                from {opacity: 1;}
+                to {opacity: 0;}
+            }
+            @keyframes fadeOut {
+                from {opacity: 1;}
+                to {opacity: 0;}
+            }
+
+            @-webkit-keyframes ball {
+                0% {
+                    -webkit-transform: translateX(0) scale(1);
+                    transform: translateX(0) scale(1);
+                }
+                50% {
+                    -webkit-transform: translateX(100px) scale(0.5);
+                    transform: translateX(100px) scale(0.5);
+                }
+                100% {
+                    -webkit-transform: translateX(0) scale(1);
+                    transform: translateX(0) scale(1);
+                }
+            }
+            @keyframes ball {
+                0% {
+                    -webkit-transform: translateX(0) scale(1);
+                    transform: translateX(0) scale(1);
+                }
+                50% {
+                    -webkit-transform: translateX(100px) scale(0.5);
+                    transform: translateX(100px) scale(0.5);
+                }
+                100% {
+                    -webkit-transform: translateX(0) scale(1);
+                    transform: translateX(0) scale(1);
+                }
+            }
+            @-webkit-keyframes eight {
+                0% {
+                    -webkit-transform: rotateX(-360deg) rotateY(0);
+                    transform: rotateX(-360deg) rotateY(0);
+                }
+                50% {
+                    -webkit-transform: rotateX(0) rotateY(-75deg);
+                    transform: rotateX(0) rotateY(-75deg);
+                }
+                100% {
+                    -webkit-transform: rotateX(-360deg) rotateY(0);
+                    transform: rotateX(-360deg) rotateY(0);
+                }
+            }
+            @keyframes eight {
+                0% {
+                    -webkit-transform: rotateX(-360deg) rotateY(0);
+                    transform: rotateX(-360deg) rotateY(0);
+                }
+                50% {
+                    -webkit-transform: rotateX(0) rotateY(-75deg);
+                    transform: rotateX(0) rotateY(-75deg);
+                }
+                100% {
+                    -webkit-transform: rotateX(-360deg) rotateY(0);
+                    transform: rotateX(-360deg) rotateY(0);
+                }
             }
         </style>
 
-        <h1 id="prediction">{{prediction}}</h1>
-        <img id="ball" src="img/magic-8-ball.jpg"/>
+        <div class="ball" id="ball">
+            <div class="eight"></div>
+            <div class="answer">
+                <div class="triangle"></div>
+                <div class="text" id="prediction">{{prediction}}</div>
+            </div>
+        </div>
     </template>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
     <script>
         (function() {
             function random(o) {
@@ -50,15 +252,40 @@
             function shrink(o) {
                 return shuffle(o).splice(0, Math.floor(o.length / 2));
             }
+            function setClass(o, c) {
+                return o.className = c;
+            }
+            function addClass(o, c) {
+                return o.className += " " + c;
+            }
+            function removeClass(o, c) {
+                var r = new RegExp("(?:^|\\s)" + c + "(?!\\S)", "g");
+                return o.className.replace(r, '');
+            }
 
             Polymer("magic-eight-ball", {
                 outlook: 0,
                 prediction: "Ask me a question",
                 domReady: function () {
-                    this.$.ball.addEventListener("mouseup", this.predict.bind(this));
+                    var p = this.$.prediction,
+                        h = p.clientHeight,
+                        w = p.clientWidth;
+                    p.style.height = h + "px";
+                    p.style.width = w + "px";
+                    this.$.ball.addEventListener("click", this.predict.bind(this));
                 },
                 predict: function () {
-                    this.$.prediction.innerHTML = random(this.getOptions());
+                    var ball = this.$.ball,
+                        pred = this.$.prediction,
+                        css = ["shake", "tell"],
+                        opt = random(this.getOptions());
+                    setClass(ball, removeClass(ball, css[1]));
+                    addClass(ball, css[0]);
+                    setTimeout(function() {
+                        pred.innerHTML = opt;
+                        setClass(ball, removeClass(ball, css[0]));
+                        addClass(ball, css[1]);
+                    }, 1000);
                 },
                 getOptions: function () {
                     var options = this.children,
