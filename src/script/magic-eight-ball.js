@@ -1,7 +1,13 @@
 (function() {
-	var css = ["shake", "tell"],
-		time = 1500;
+	var pfx = ["webkit", "moz", "MS", "o", ""],
+		css = ["shake", "tell"];
 
+	function prefixedEvent(element, type, callback) {
+		for (var p = 0; p < pfx.length; p++) {
+			if (!pfx[p]) type = type.toLowerCase();
+			element.addEventListener(pfx[p]+type, callback, false);
+		}
+	}
 	function random(o) {
 		return o[Math.floor(Math.random() * o.length)];
 	}
@@ -28,6 +34,7 @@
 		prediction: "Ask me a question",
 		domReady: function () {
 			var ball = this.$.ball;
+			prefixedEvent(ball, "AnimationEnd", this.tell.bind(this));
 			ball.addEventListener("click", this.predict.bind(this));
 		},
 		predict: function () {
@@ -37,10 +44,11 @@
 			setClass(ball, removeClass(ball, css[1]));
 			addClass(ball, css[0]);
 			pred.innerHTML = opt;
-			setTimeout(function() {
-				setClass(ball, removeClass(ball, css[0]));
-				addClass(ball, css[1]);
-			}, time * 2);
+		},
+		tell: function () {
+			var ball = this.$.ball;
+			setClass(ball, removeClass(ball, css[0]));
+			addClass(ball, css[1]);
 		},
 		getOptions: function () {
 			var options = this.children,

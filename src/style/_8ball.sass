@@ -1,3 +1,11 @@
+=small($w)
+	position: absolute
+	top: (100 - $w) / 2
+	left: (100 - $w) / 2
+	width: $w
+	height: $w
+
+
 .ball
 	cursor: pointer
 	position: relative
@@ -6,39 +14,34 @@
 	width: 300px
 	height: 300px
 	background: black
-	@include box-shadow(20px 20px 50px rgba(255, 255, 255, 0.4) inset)
+	+box-shadow(20px 20px 50px rgba(255, 255, 255, 0.4) inset)
 
 	//pseudo elements
 	&:before
+		$m: 50px
 		content: ''
 		position: absolute
-		top: -50px
-		bottom: -50px
-		left: -50px
-		right: -50px
-		border: 50px solid #ffffff
+		top: -($m)
+		bottom: -($m)
+		left: -($m)
+		right: -($m)
+		border: $m solid #ffffff
 
 	&:after
 		content: ''
 		position: absolute
-		bottom: 0px
-		right: 0
-		width: 70%
-		height: 10px
+		bottom: 0
+		right: 16%
+		width: 56%
+		height: 8px
 		background: black
-		@include box-shadow(0 0 15px 15px black)
-		opacity: .5
+		+box-shadow(0 0 15px 20px black)
+		opacity: .2
 
 	//child elements
-	.eight,
 	.answer
-		position: absolute
-		top: 25%
-		left: 25%
-		width: 50%
-		height: 50%
+		+small(60%)
 
-	.answer
 		table,
 		td
 			height: 100%
@@ -52,7 +55,7 @@
 			left: 0
 			right: 0
 			border: 4px solid #444
-			@include box-shadow(inset -12px -22px 70px 0px rgba(255, 255, 255, 0.2))
+			+box-shadow(inset -12px -22px 70px 0px rgba(255, 255, 255, 0.2))
 
 		.text
 			color: white
@@ -64,17 +67,18 @@
 			&:after
 				content: ''
 				position: absolute
-				z-index: -1
 				top: 50%
 				left: 50%
-				margin: -33px 0 0 -60px
+				margin: -38px 0 0 -73px
 				height: 0
 				width: 0
-				border-left: 60px solid transparent
-				border-right: 60px solid transparent
-				border-top: 100px solid blue
+				border-left: 74px solid transparent
+				border-right: 74px solid transparent
+				border-top: 120px solid blue
 
 	.eight
+		+small(50%)
+
 		&:before
 			content: '8'
 			position: absolute
