@@ -1,1 +1,2 @@
-js/lib
+src/lib
+.sass-cache

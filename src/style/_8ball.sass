@@ -1,0 +1,92 @@
+=small($w)
+	position: absolute
+	top: (100 - $w) / 2
+	left: (100 - $w) / 2
+	width: $w
+	height: $w
+
+
+.ball
+	cursor: pointer
+	position: relative
+	display: block
+	margin: 30px auto
+	width: 300px
+	height: 300px
+	background: black
+	+box-shadow(20px 20px 50px rgba(255, 255, 255, 0.4) inset)
+
+	//pseudo elements
+	&:before
+		$m: 50px
+		content: ''
+		position: absolute
+		top: -($m)
+		bottom: -($m)
+		left: -($m)
+		right: -($m)
+		border: $m solid #ffffff
+
+	&:after
+		content: ''
+		position: absolute
+		bottom: 0
+		right: 16%
+		width: 56%
+		height: 8px
+		background: black
+		+box-shadow(0 0 15px 20px black)
+		opacity: .2
+
+	//child elements
+	.answer
+		+small(60%)
+
+		table,
+		td
+			height: 100%
+			width: 100%
+
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			bottom: 0
+			left: 0
+			right: 0
+			border: 4px solid #444
+			+box-shadow(inset -12px -22px 70px 0px rgba(255, 255, 255, 0.2))
+
+		.text
+			color: white
+			font: .65em/1.2 sans-serif
+			text-align: center
+			vertical-align: middle
+			height: 100%
+			width: 100%
+			&:after
+				content: ''
+				position: absolute
+				top: 50%
+				left: 50%
+				margin: -38px 0 0 -73px
+				height: 0
+				width: 0
+				border-left: 74px solid transparent
+				border-right: 74px solid transparent
+				border-top: 120px solid blue
+
+	.eight
+		+small(50%)
+
+		&:before
+			content: '8'
+			position: absolute
+			top: 0
+			bottom: 0
+			left: 0
+			right: 0
+			font-size: 7em
+			line-height: 154px
+			text-align: center
+			background: white

@@ -3,18 +3,18 @@
 <head>
     <title>Magic Eight Ball</title>
 
-    <script src="js/lib/platform/platform.js"></script>
-    <script src="js/lib/polymer/polymer.js"></script>
+    <script src="src/lib/platform/platform.js"></script>
+    <script src="src/lib/polymer/polymer.js"></script>
 
-    <link rel="import" href="magic-eight-ball.html"/>
+    <link rel="import" href="src/magic-eight-ball.html"/>
 </head>
 <body>
 
     <magic-eight-ball outlook="1">
         <option outlook="0">Check back later</option>
         <option outlook="0">Maybe</option>
-        <option outlook="0">Better ask Laitin</option>
-        <option outlook="0">Go ask mom</option>
+        <option outlook="-1">Are you crazy or stupid?</option>
+        <option outlook="-1">Naw dawg</option>
         <option outlook="1">Yes!</option>
         <option outlook="1">Why not?</option>
         <option outlook="1">All signs point to yes</option>
@@ -26,18 +26,6 @@
         <option outlook="-1">Nope.</option>
     </magic-eight-ball>
 
-    <magic-eight-ball outlook="-1">
-        <option outlook="0">Check back later</option>
-        <option outlook="0">Maybe</option>
-        <option outlook="1">Yes!</option>
-        <option outlook="1">Def!</option>
-        <option outlook="1">Fo Sho</option>
-        <option outlook="1">Yeah</option>
-        <option outlook="-1">Naw</option>
-        <option outlook="-1">Never</option>
-        <option outlook="-1">Hell No</option>
-        <option outlook="-1">Nah</option>
-    </magic-eight-ball>
 
 </body>
 </html>
