@@ -9,9 +9,11 @@ A [Polymer](http://polymer-project.org) element for a magic eight ball
 
 > [Check it live](http://press22day.github.io/magic-eight-ball).
 
-## Install
-
-todo
+```html
+<magic-eight-ball outlook="-1|0|1">
+	<option outlook="-1|0|1"></option>
+</magic-eight-ball>
+```
 
 ## Usage
 
