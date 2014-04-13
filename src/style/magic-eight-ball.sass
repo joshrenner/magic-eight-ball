@@ -1,8 +1,7 @@
 @import ../lib/bourbon/app/assets/stylesheets/bourbon
 @import 8ball
 
-$animation: ease
-$animation-duration: 2s
+$animation-duration: 1.5s
 
 body
 	@include perspective(1000px)
@@ -18,10 +17,8 @@ body
 	border-radius: 50%
 
 
-
-// when first loads
 .ball
-	$animation: ease 1 reverse both
+	$animation: ease 1 reverse forwards
 
 	@include transform-style(preserve-3d)
 	@include animation(ball $animation-duration $animation)
@@ -34,23 +31,35 @@ body
 		@include transform-style(preserve-3d)
 		@include animation(answer $animation-duration $animation)
 		&:before,
-		.triangle,
+		.text:after,
 		.text
 			@include transform(translateZ(128px))
 		.text,
-		.triangle
+		.text:after
 			opacity: 0
-			@include animation(prediction 1s ease-out $animation-duration both)
+			@include animation(prediction .3s ease-out $animation-duration forwards)
+
+.ball.shake
+	$animation: ease 2 alternate forwards
+
+	@include animation(ball $animation-duration $animation)
+	.eight
+		@include animation(eight $animation-duration $animation)
+	.answer
+		@include animation(answer $animation-duration $animation)
+		.text,
+		.text:after
+			opacity: 0
+			@include animation(prediction .3s ease-out $animation-duration alternate-reverese forwards)
+
 
 
 @include keyframes(prediction)
 	to
 		opacity: 1
-		z-index: 1
-		@include transform(rotate(-8deg) scale(1))
+		//@include transform(rotate(-8deg))
 	from
 		opacity: 0
-		@include transform(rotate(0) scale(.8))
 
 @include keyframes(ball)
 	to

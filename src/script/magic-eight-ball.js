@@ -1,4 +1,7 @@
 (function() {
+	var css = ["shake", "tell", "init"],
+		time = 1500;
+
 	function random(o) {
 		return o[Math.floor(Math.random() * o.length)];
 	}
@@ -24,20 +27,23 @@
 		outlook: 0,
 		prediction: "Ask me a question",
 		domReady: function () {
-			this.$.ball.addEventListener("click", this.predict.bind(this));
+			var ball = this.$.ball;
+			ball.addEventListener("click", this.predict.bind(this));
+//			setTimeout(function() {
+//				setClass(ball, removeClass(ball, css[2]));
+//			}, time);
 		},
 		predict: function () {
 			var ball = this.$.ball,
 				pred = this.$.prediction,
-				css = ["shake", "tell"],
 				opt = random(this.getOptions());
 			setClass(ball, removeClass(ball, css[1]));
 			addClass(ball, css[0]);
+			pred.innerHTML = opt;
 			setTimeout(function() {
-				pred.innerHTML = opt;
 				setClass(ball, removeClass(ball, css[0]));
 				addClass(ball, css[1]);
-			}, 1000);
+			}, time * 2);
 		},
 		getOptions: function () {
 			var options = this.children,

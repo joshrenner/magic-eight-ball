@@ -45,24 +45,25 @@
     right: 0;
     border: 4px solid #444444;
     box-shadow: inset -12px -22px 70px 0px rgba(255, 255, 255, 0.2); }
-  .ball .answer .triangle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -33px 0 0 -60px;
-    height: 0;
-    width: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-top: 100px solid blue; }
   .ball .answer .text {
-    position: relative;
     color: white;
     font: 0.65em/1.2 sans-serif;
     text-align: center;
     vertical-align: middle;
     height: 100%;
     width: 100%; }
+    .ball .answer .text:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      margin: -33px 0 0 -60px;
+      height: 0;
+      width: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-top: 100px solid blue; }
   .ball .eight:before {
     content: "8";
     position: absolute;
@@ -98,18 +99,18 @@ body {
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-animation: ball 2s ease 1 reverse both;
-  -moz-animation: ball 2s ease 1 reverse both;
-  animation: ball 2s ease 1 reverse both; }
+  -webkit-animation: ball 1.5s ease 1 reverse forwards;
+  -moz-animation: ball 1.5s ease 1 reverse forwards;
+  animation: ball 1.5s ease 1 reverse forwards; }
   .ball .eight {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-animation: eight 2s ease 1 reverse both;
-    -moz-animation: eight 2s ease 1 reverse both;
-    animation: eight 2s ease 1 reverse both; }
+    -webkit-animation: eight 1.5s ease 1 reverse forwards;
+    -moz-animation: eight 1.5s ease 1 reverse forwards;
+    animation: eight 1.5s ease 1 reverse forwards; }
     .ball .eight:before {
       -webkit-transform: translateZ(150px);
       -moz-transform: translateZ(150px);
@@ -122,11 +123,11 @@ body {
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-animation: answer 2s ease 1 reverse both;
-    -moz-animation: answer 2s ease 1 reverse both;
-    animation: answer 2s ease 1 reverse both; }
+    -webkit-animation: answer 1.5s ease 1 reverse forwards;
+    -moz-animation: answer 1.5s ease 1 reverse forwards;
+    animation: answer 1.5s ease 1 reverse forwards; }
     .ball .answer:before,
-    .ball .answer .triangle,
+    .ball .answer .text:after,
     .ball .answer .text {
       -webkit-transform: translateZ(128px);
       -moz-transform: translateZ(128px);
@@ -134,51 +135,58 @@ body {
       -o-transform: translateZ(128px);
       transform: translateZ(128px); }
     .ball .answer .text,
-    .ball .answer .triangle {
+    .ball .answer .text:after {
       opacity: 0;
-      -webkit-animation: prediction 1s ease-out 2s both;
-      -moz-animation: prediction 1s ease-out 2s both;
-      animation: prediction 1s ease-out 2s both; }
+      -webkit-animation: prediction 0.3s ease-out 1.5s forwards;
+      -moz-animation: prediction 0.3s ease-out 1.5s forwards;
+      animation: prediction 0.3s ease-out 1.5s forwards; }
+
+.ball.shake {
+  -webkit-animation: ball 1.5s ease 2 alternate forwards;
+  -moz-animation: ball 1.5s ease 2 alternate forwards;
+  animation: ball 1.5s ease 2 alternate forwards; }
+  .ball.shake .eight {
+    -webkit-animation: eight 1.5s ease 2 alternate forwards;
+    -moz-animation: eight 1.5s ease 2 alternate forwards;
+    animation: eight 1.5s ease 2 alternate forwards; }
+  .ball.shake .answer {
+    -webkit-animation: answer 1.5s ease 2 alternate forwards;
+    -moz-animation: answer 1.5s ease 2 alternate forwards;
+    animation: answer 1.5s ease 2 alternate forwards; }
+    .ball.shake .answer .text,
+    .ball.shake .answer .text:after {
+      opacity: 0;
+      -webkit-animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards;
+      -moz-animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards;
+      animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards; }
 
 @-webkit-keyframes prediction {
   to {
-    opacity: 1;
-    z-index: 1;
-    -webkit-transform: rotate(-8deg) scale(1); }
+    opacity: 1; }
 
   from {
-    opacity: 0;
-    -webkit-transform: rotate(0) scale(0.8); } }
+    opacity: 0; } }
 
 @-moz-keyframes prediction {
   to {
-    opacity: 1;
-    z-index: 1;
-    -moz-transform: rotate(-8deg) scale(1); }
+    opacity: 1; }
 
   from {
-    opacity: 0;
-    -moz-transform: rotate(0) scale(0.8); } }
+    opacity: 0; } }
 
 @-o-keyframes prediction {
   to {
-    opacity: 1;
-    z-index: 1;
-    -o-transform: rotate(-8deg) scale(1); }
+    opacity: 1; }
 
   from {
-    opacity: 0;
-    -o-transform: rotate(0) scale(0.8); } }
+    opacity: 0; } }
 
 @keyframes prediction {
   to {
-    opacity: 1;
-    z-index: 1;
-    transform: rotate(-8deg) scale(1); }
+    opacity: 1; }
 
   from {
-    opacity: 0;
-    transform: rotate(0) scale(0.8); } }
+    opacity: 0; } }
 
 @-webkit-keyframes ball {
   to {

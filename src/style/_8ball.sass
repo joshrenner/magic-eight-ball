@@ -54,25 +54,25 @@
 			border: 4px solid #444
 			@include box-shadow(inset -12px -22px 70px 0px rgba(255, 255, 255, 0.2))
 
-		.triangle
-			position: absolute
-			top: 50%
-			left: 50%
-			margin: -33px 0 0 -60px
-			height: 0
-			width: 0
-			border-left: 60px solid transparent
-			border-right: 60px solid transparent
-			border-top: 100px solid blue
-
 		.text
-			position: relative
 			color: white
 			font: .65em/1.2 sans-serif
 			text-align: center
 			vertical-align: middle
 			height: 100%
 			width: 100%
+			&:after
+				content: ''
+				position: absolute
+				z-index: -1
+				top: 50%
+				left: 50%
+				margin: -33px 0 0 -60px
+				height: 0
+				width: 0
+				border-left: 60px solid transparent
+				border-right: 60px solid transparent
+				border-top: 100px solid blue
 
 	.eight
 		&:before
