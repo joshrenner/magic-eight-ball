@@ -48,9 +48,7 @@
       color: white;
       font: 0.65em/1.2 sans-serif;
       text-align: center;
-      vertical-align: middle;
-      height: 100%;
-      width: 100%; }
+      vertical-align: middle; }
       .ball .answer .text:after {
         content: "";
         position: absolute;
