@@ -1,5 +1,5 @@
 (function() {
-	var css = ["shake", "tell", "init"],
+	var css = ["shake", "tell"],
 		time = 1500;
 
 	function random(o) {
@@ -29,9 +29,6 @@
 		domReady: function () {
 			var ball = this.$.ball;
 			ball.addEventListener("click", this.predict.bind(this));
-//			setTimeout(function() {
-//				setClass(ball, removeClass(ball, css[2]));
-//			}, time);
 		},
 		predict: function () {
 			var ball = this.$.ball,

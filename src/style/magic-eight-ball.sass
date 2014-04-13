@@ -18,7 +18,7 @@ body
 
 
 .ball
-	$animation: ease 1 reverse forwards
+	$animation: ease 1 reverse both
 
 	@include transform-style(preserve-3d)
 	@include animation(ball $animation-duration $animation)
@@ -37,20 +37,29 @@ body
 		.text,
 		.text:after
 			opacity: 0
-			@include animation(prediction .3s ease-out $animation-duration forwards)
+			@include animation(prediction .3s ease-out $animation-duration both)
+.shake
+	$animation: ease infinite alternate-reverse both
 
-.ball.shake
-	$animation: ease 2 alternate forwards
-
+	@include transform-style(preserve-3d)
 	@include animation(ball $animation-duration $animation)
 	.eight
+		@include transform-style(preserve-3d)
 		@include animation(eight $animation-duration $animation)
+		&:before
+			@include transform(translateZ(150px))
 	.answer
+		@include transform-style(preserve-3d)
 		@include animation(answer $animation-duration $animation)
+		&:before,
+		.text:after,
+		.text
+			@include transform(translateZ(128px))
 		.text,
 		.text:after
 			opacity: 0
-			@include animation(prediction .3s ease-out $animation-duration alternate-reverese forwards)
+			@include animation(prediction .3s ease-out $animation-duration alternate both)
+
 
 
 

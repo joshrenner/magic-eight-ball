@@ -99,18 +99,18 @@ body {
   -ms-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-animation: ball 1.5s ease 1 reverse forwards;
-  -moz-animation: ball 1.5s ease 1 reverse forwards;
-  animation: ball 1.5s ease 1 reverse forwards; }
+  -webkit-animation: ball 1.5s ease 1 reverse both;
+  -moz-animation: ball 1.5s ease 1 reverse both;
+  animation: ball 1.5s ease 1 reverse both; }
   .ball .eight {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-animation: eight 1.5s ease 1 reverse forwards;
-    -moz-animation: eight 1.5s ease 1 reverse forwards;
-    animation: eight 1.5s ease 1 reverse forwards; }
+    -webkit-animation: eight 1.5s ease 1 reverse both;
+    -moz-animation: eight 1.5s ease 1 reverse both;
+    animation: eight 1.5s ease 1 reverse both; }
     .ball .eight:before {
       -webkit-transform: translateZ(150px);
       -moz-transform: translateZ(150px);
@@ -123,9 +123,9 @@ body {
     -ms-transform-style: preserve-3d;
     -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-animation: answer 1.5s ease 1 reverse forwards;
-    -moz-animation: answer 1.5s ease 1 reverse forwards;
-    animation: answer 1.5s ease 1 reverse forwards; }
+    -webkit-animation: answer 1.5s ease 1 reverse both;
+    -moz-animation: answer 1.5s ease 1 reverse both;
+    animation: answer 1.5s ease 1 reverse both; }
     .ball .answer:before,
     .ball .answer .text:after,
     .ball .answer .text {
@@ -137,28 +137,57 @@ body {
     .ball .answer .text,
     .ball .answer .text:after {
       opacity: 0;
-      -webkit-animation: prediction 0.3s ease-out 1.5s forwards;
-      -moz-animation: prediction 0.3s ease-out 1.5s forwards;
-      animation: prediction 0.3s ease-out 1.5s forwards; }
+      -webkit-animation: prediction 0.3s ease-out 1.5s both;
+      -moz-animation: prediction 0.3s ease-out 1.5s both;
+      animation: prediction 0.3s ease-out 1.5s both; }
 
-.ball.shake {
-  -webkit-animation: ball 1.5s ease 2 alternate forwards;
-  -moz-animation: ball 1.5s ease 2 alternate forwards;
-  animation: ball 1.5s ease 2 alternate forwards; }
-  .ball.shake .eight {
-    -webkit-animation: eight 1.5s ease 2 alternate forwards;
-    -moz-animation: eight 1.5s ease 2 alternate forwards;
-    animation: eight 1.5s ease 2 alternate forwards; }
-  .ball.shake .answer {
-    -webkit-animation: answer 1.5s ease 2 alternate forwards;
-    -moz-animation: answer 1.5s ease 2 alternate forwards;
-    animation: answer 1.5s ease 2 alternate forwards; }
-    .ball.shake .answer .text,
-    .ball.shake .answer .text:after {
+.shake {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: ball 1.5s ease infinite alternate-reverse both;
+  -moz-animation: ball 1.5s ease infinite alternate-reverse both;
+  animation: ball 1.5s ease infinite alternate-reverse both; }
+  .shake .eight {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-animation: eight 1.5s ease infinite alternate-reverse both;
+    -moz-animation: eight 1.5s ease infinite alternate-reverse both;
+    animation: eight 1.5s ease infinite alternate-reverse both; }
+    .shake .eight:before {
+      -webkit-transform: translateZ(150px);
+      -moz-transform: translateZ(150px);
+      -ms-transform: translateZ(150px);
+      -o-transform: translateZ(150px);
+      transform: translateZ(150px); }
+  .shake .answer {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-animation: answer 1.5s ease infinite alternate-reverse both;
+    -moz-animation: answer 1.5s ease infinite alternate-reverse both;
+    animation: answer 1.5s ease infinite alternate-reverse both; }
+    .shake .answer:before,
+    .shake .answer .text:after,
+    .shake .answer .text {
+      -webkit-transform: translateZ(128px);
+      -moz-transform: translateZ(128px);
+      -ms-transform: translateZ(128px);
+      -o-transform: translateZ(128px);
+      transform: translateZ(128px); }
+    .shake .answer .text,
+    .shake .answer .text:after {
       opacity: 0;
-      -webkit-animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards;
-      -moz-animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards;
-      animation: prediction 0.3s ease-out 1.5s alternate-reverese forwards; }
+      -webkit-animation: prediction 0.3s ease-out 1.5s alternate both;
+      -moz-animation: prediction 0.3s ease-out 1.5s alternate both;
+      animation: prediction 0.3s ease-out 1.5s alternate both; }
 
 @-webkit-keyframes prediction {
   to {
