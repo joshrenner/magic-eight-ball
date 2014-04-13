@@ -1,0 +1,22 @@
+{
+  "name": "magic-eight-ball",
+  "version": "0.0.0",
+  "authors": [
+    "Josh Renner <josh@renner.mn>"
+  ],
+  "description": "Custom element with all the decision making power of the classic magic eight ball",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "script/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"bourbon": "3.1.8",
+    "polymer": "~0.2.2"
+  }
+}
