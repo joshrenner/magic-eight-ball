@@ -50,7 +50,7 @@ $ bower install
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`outlook`  | *string*                  | `0`                 | 1 for optimism, -1 for pessimism
+`outlook`  | *string*                  | `0`                 | 1 for optimism, 0 for neutral, -1 for pessimism
 
 
 ## License
