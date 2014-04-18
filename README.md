@@ -9,9 +9,11 @@ A [Polymer](http://polymer-project.org) element for a magic eight ball
 
 > [Check it live](http://press22day.github.io/magic-eight-ball).
 
-## Install
-
-todo
+```html
+<magic-eight-ball outlook="-1|0|1">
+	<option outlook="-1|0|1"></option>
+</magic-eight-ball>
+```
 
 ## Usage
 
@@ -48,7 +50,7 @@ $ bower install
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`outlook`  | *string*                  | `0`                 | 1 for optimism, -1 for pessimism
+`outlook`  | *string*                  | `0`                 | 1 for optimism, 0 for neutral, -1 for pessimism
 
 
 ## License
